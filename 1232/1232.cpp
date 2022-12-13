@@ -8,36 +8,12 @@
 #include <fstream>
 #include <conio.h>
 using namespace std;
-//class Widget
+class Widget;
 //{public:
 //    bool choosing(string Task_name);
 //    void Call_Main_menu();
 //
 //};
-class Patients {
-private:
-    int age;
-    string name, diagnos, city, gender;
-  friend class Widget;
-    fstream file;
-public:
-    Patients() {
-        
-        
-       if( choosing("Добавить новую запись о пациенте?"))
-       {
-       
-       }
-       else
-       {
-           menu.Call_Main_menu();
-       }
-
-
-    }
-
-
-};
 class Widget
 {
     vector<string> menu{"Добавить пациента\n","Lree\n"};
@@ -117,6 +93,31 @@ public:
             }
         }
     }
+};
+
+class Patients {
+private:
+    int age;
+    string name, diagnos, city, gender;
+  Widget *sd;
+    fstream file;
+public:
+    Patients() {
+        sd = new Widget;
+        
+       if(sd->choosing("Добавить новую запись о пациенте?"))
+       {
+       
+       }
+       else
+       {
+           sd->Call_Main_menu();
+       }
+
+
+    }
+
+
 };
 
 int main()
