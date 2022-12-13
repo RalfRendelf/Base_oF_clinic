@@ -1,4 +1,5 @@
 #include "main.h"
+#include "Widget.h"
 //class Widget
 //{
 //    vector<string> menu{ "Добавить пациента\n","Lree\n" };

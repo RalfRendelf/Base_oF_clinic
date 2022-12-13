@@ -3,7 +3,8 @@
 
 
 #include "main.h"
-
+#include "Patient.h"
+#include "Widget.h"
 
 
 
@@ -12,7 +13,7 @@
 
 int main()
 {
-    string name = "diagnos.txt";
+   string name = "diagnos.txt";
 
     Widget f;
     setlocale(LC_ALL, "Russian");
