@@ -8,16 +8,23 @@
 #include <fstream>
 #include <conio.h>
 using namespace std;
+//class Widget
+//{public:
+//    bool choosing(string Task_name);
+//    void Call_Main_menu();
+//
+//};
 class Patients {
 private:
     int age;
     string name, diagnos, city, gender;
-    Widget menu;
+  friend class Widget;
+    fstream file;
 public:
     Patients() {
         
         
-       if( menu.choosing("Добавить новую запись о пациенте?"))
+       if( choosing("Добавить новую запись о пациенте?"))
        {
        
        }
@@ -33,7 +40,7 @@ public:
 };
 class Widget
 {
-    vector<string> menu;
+    vector<string> menu{"Добавить пациента\n","Lree\n"};
 public:
     bool choosing(string Task_name)
     {
@@ -82,14 +89,30 @@ public:
     }
     void Call_Main_menu()
     {
-        int i = 0;
+        int cnt = 0;
         
         while (1) {
+            system("cls");
             cout << "\t\tГлавное меню\n";
             switch (_getch())
             {case 72:
-                
+                cnt--;
+                if (cnt < 0)
+                    cnt = menu.size()-1;
+                break;
+            case 80:
+                cnt++;
+                if (cnt > menu.size()-1)
+                    cnt = 0;
+                break;
             default:
+                for (int i = 0; i < menu.size(); i++)
+                {
+                    if (i == cnt)
+                        cout << "=>";
+                    cout << menu[i] << "\n";
+            
+                }
                 break;
             }
         }
@@ -102,7 +125,7 @@ int main()
 
     Widget f;
     setlocale(LC_ALL, "Russian");
-   f.choosing("Хотите начать регистрацию пациента?");
+    f.Call_Main_menu();
    
 }
 
