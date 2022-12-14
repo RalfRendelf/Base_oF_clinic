@@ -21,7 +21,7 @@ Patients::Patients() {
     }
     else
     {
-        sd.Call_Main_menu();
+        sd.Call_menu("re");
     }
 
 

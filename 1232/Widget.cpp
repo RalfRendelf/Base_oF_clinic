@@ -53,13 +53,13 @@ bool Widget::choosing(string Task_name)
     }
 
 }
-void Widget::Call_Main_menu()
-{
+void Widget::Call_menu(string menu_name)
+{ 
     int cnt = 0;
-
+    Draw_menu(menu, menu_name, cnt);
     while (1) {
-        system("cls");
-        cout << "\t\tГлавное меню\n";
+        
+        
         switch (_getch())
         {
         case 72:
@@ -72,15 +72,23 @@ void Widget::Call_Main_menu()
             if (cnt > menu.size() - 1)
                 cnt = 0;
             break;
-        default:
-            for (int i = 0; i < menu.size(); i++)
-            {
-                if (i == cnt)
-                    cout << "=>";
-                cout << menu[i] << "\n";
 
-            }
+        default:
+            Draw_menu(menu, menu_name, cnt);
             break;
         }
     }
+}
+void Widget::Draw_menu(vector<string>& Menu, string Main_str, int &cnt)
+{
+    system("cls");
+    cout << "\t\t"<<Main_str<<"\n";
+    for (int i = 0; i < Menu.size(); i++)
+    {
+        if (i == cnt)
+            cout << "=>";
+        cout << Menu[i] << "\n";
+
+    }
+
 }
