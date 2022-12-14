@@ -11,7 +11,7 @@ bool Widget::choosing(string Task_name)
 {
     bool check = false;
 
-    int click = 0;
+    
     while (1)
     {
 
@@ -55,40 +55,60 @@ bool Widget::choosing(string Task_name)
 }
 void Widget::Call_menu(string menu_name)
 { 
-    int cnt = 0;
-    Draw_menu(menu, menu_name, cnt);
+    bool click = false;
+    Draw_menu(menu_name);
     while (1) {
         
         
         switch (_getch())
         {
+        case 13:
+            click = true;
+            //break;
         case 72:
             cnt--;
             if (cnt < 0)
                 cnt = menu.size() - 1;
-            break;
+            //break;
         case 80:
             cnt++;
             if (cnt > menu.size() - 1)
                 cnt = 0;
-            break;
+            //break;
 
         default:
-            Draw_menu(menu, menu_name, cnt);
+            Draw_menu(menu_name);
+            if (click) Functor();
+            click = false;
             break;
         }
     }
 }
-void Widget::Draw_menu(vector<string>& Menu, string Main_str, int &cnt)
+void Widget::Draw_menu( string Main_str)
 {
     system("cls");
     cout << "\t\t"<<Main_str<<"\n";
-    for (int i = 0; i < Menu.size(); i++)
+    for (int i = 0; i < menu.size(); i++)
     {
         if (i == cnt)
             cout << "=>";
-        cout << Menu[i] << "\n";
+        cout << menu[i] << "\n";
 
     }
+
+}
+void Widget::Functor()
+{
+    
+        switch (cnt)
+        {case 0:
+            choosing(menu[cnt]);
+            break;
+        default:
+            break;
+        }
+        
+      
+    
 
 }

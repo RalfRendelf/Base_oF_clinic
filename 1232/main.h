@@ -5,9 +5,8 @@
 #include <stack>
 #include <fstream>
 #include <conio.h>
-//#include "Patient.h"
-//#include "Widget.h"
 #include <string>
+#include <functional>
 
 
 
