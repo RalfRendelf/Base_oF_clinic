@@ -11,7 +11,7 @@ private:
     Widget sd;
     fstream file;
 public:
-    Patients();
+  //  Patients();
 
 
 };

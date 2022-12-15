@@ -12,17 +12,17 @@
 //
 //
 //};
-Patients::Patients() {
-    
-
-    if (sd.choosing("Добавить новую запись о пациенте?"))
-    {
-        sd.Call_menu("ДА");
-    }
-    else
-    {
-        sd.Call_menu("НЕТ");
-    }
-
-
-}
+//Patients::Patients() {
+//    
+//
+//    if (sd.choosing("Добавить новую запись о пациенте?"))
+//    {
+//        sd.Call_menu("ДА");
+//    }
+//    else
+//    {
+//        sd.Call_menu("НЕТ");
+//    }
+//
+//
+//}

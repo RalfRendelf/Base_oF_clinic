@@ -1,114 +1,70 @@
 #include "main.h"
 #include "Widget.h"
-//class Widget
-//{
-//    vector<string> menu{ "Добавить пациента\n","Lree\n" };
-//public:
-//    bool choosing(string Task_name);
-//    void Call_Main_menu();
-//};
-bool Widget::choosing(string Task_name)
-{
-    bool check = false;
-
-    
-    while (1)
-    {
-
-        // cout << click;
-        switch (_getch())
-        {
-        case 13:
-            return check;
-        case 72:
-            check = !check;
-            //system("clr");
-            break;
-        case 80:
-            check = !check;
-            // system("clr");
-            break;
-        default:
-            if (check)
-            {
-                system("cls");
-                cout << Task_name << endl;
-                cout << "=>Да\n" << "Нет\n";
-
-            }
-            else
-            {
-                system("cls");
-                cout << Task_name << endl;
-                cout << "Да\n" << "=>Нет\n";
-
-            }
-
-            break;
 
 
-        }
-        // click = _getch();
-       //  cout << click;
-    }
-
-}
-void Widget::Call_menu(string menu_name)
-{ 
-    bool click = false;
-    Draw_menu(menu_name);
-    while (1) {
-        
-        
-        switch (_getch())
-        {
-        case 13:
-            click = true;
-            //break;
-        case 72:
-            cnt--;
-            if (cnt < 0)
-                cnt = menu.size() - 1;
-            //break;
-        case 80:
-            cnt++;
-            if (cnt > menu.size() - 1)
-                cnt = 0;
-            //break;
-
-        default:
-            Draw_menu(menu_name);
-            if (click) Functor();
-            click = false;
-            break;
-        }
-    }
-}
-void Widget::Draw_menu( string Main_str)
+void Widget::Draw_menu(string& name, vector<string>& Points)/*метод для отрисовки меню*/
 {
     system("cls");
-    cout << "\t\t"<<Main_str<<"\n";
-    for (int i = 0; i < menu.size(); i++)
+    cout << "\t\t" << name << "\n";
+    MenuSize = Points.size();
+    for (int i = 0; i < MenuSize; i++)
     {
         if (i == cnt)
             cout << "=>";
-        cout << menu[i] << "\n";
+        cout << Points[i] << "\n";
 
     }
-
 }
-void Widget::Functor()
-{
-    
-        switch (cnt)
-        {case 0:
-            choosing(menu[cnt]);
-            break;
-        default:
-            break;
-        }
-        
-      
-    
 
+
+void Widget::click()/*метод для выбора варианта в меню с помощью клавишей верх, вниз и ввод*/
+{
+     switch (_getch())
+            {
+            case 13://ввод
+                Enter = true;
+                break;
+            case 72://стрелка вниз
+                cnt--;
+                if (cnt < 0) cnt = MenuSize - 1;
+                break;
+            case 80://стрелка вверх
+                cnt++;
+                if (cnt > MenuSize - 1) cnt = 0;
+                break;
+
+            default: break;
+            }
+  }
+void Widget::Main_menu()/*вызов главного меню*/
+{
+    vector<string> mainmenu{ "Добавить пациента","Отобразить пациентов" };
+    string menuname = "Главное меню";
+    Enter = 0;
+    cnt = 0;
+    int cntfu;
+    while (1)
+    {
+        
+        Draw_menu(menuname, mainmenu);
+        click();
+        cntfu = cnt;
+        if (Enter)
+        {
+            choose();
+        }
+
+        cnt = cntfu;
+    }
+}
+void Widget::choose()
+{
+    switch (cnt)
+    {
+    case 0:
+
+
+    default:
+        break;
+    }
 }

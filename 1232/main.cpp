@@ -17,7 +17,7 @@ int main()
 
     Widget f;
     setlocale(LC_ALL, "Russian");
-    f.Call_menu("НЕреее");
+    f.Main_menu();
    
 }
 
